@@ -1,0 +1,25 @@
+{
+  "name": "vue-signup-login",
+  "version": "1.0.0",
+  "description": "An authentication agnostic VueJS powered user sign up and login form component.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nueverest/vue-signup-login.git"
+  },
+  "keywords": [
+    "vuejs",
+    "signup",
+    "login",
+    "authentication"
+  ],
+  "author": "Chad Nelson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nueverest/vue-signup-login/issues"
+  },
+  "homepage": "https://github.com/nueverest/vue-signup-login#readme"
+}
