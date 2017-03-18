@@ -18,6 +18,25 @@ module.exports = function (config) {
     preprocessors: {
       './index.js': ['webpack', 'sourcemap']
     },
+    // ** ADD THIS IN ** (vue-cli's webpack template doesn't add it by default)
+    plugins: [
+      // Launchers
+      //'karma-chrome-launcher',
+      //'karma-firefox-launcher',
+      'karma-phantomjs-launcher',
+
+      // Test Libraries
+      'karma-mocha',
+      'karma-sinon-chai',
+
+      // Preprocessors
+      'karma-webpack',
+      'karma-sourcemap-loader',
+
+      // Reporters
+      'karma-spec-reporter',
+      'karma-coverage'
+    ],
     webpack: webpackConfig,
     webpackMiddleware: {
       noInfo: true

@@ -28,8 +28,31 @@ vue init webpack vue-signup-login
 - Delete `vue-signup-login`.
 
 ##### Finish install. (Takes about 8 minutes.)
-```
+``` bash
 npm install
+```
+
+##### Setup Unit Testing
+Add this to `/test/unit/karma.conf.js` right after `preprocessors: {...},`.
+
+```javascript
+// ** ADD THIS IN ** (vue-cli's webpack template doesn't add it by default)
+plugins: [
+  // Launchers
+  'karma-chrome-launcher',
+
+  // Test Libraries
+  'karma-mocha',
+  'karma-sinon-chai',
+
+  // Preprocessors
+  'karma-webpack',
+  'karma-sourcemap-loader',
+
+  // Reporters
+  'karma-spec-reporter',
+  'karma-coverage'
+],
 ```
 
 ##### Build Setup Reference
