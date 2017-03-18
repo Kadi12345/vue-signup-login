@@ -21,10 +21,15 @@ vue init webpack vue-signup-login
 ? Setup e2e tests with Nightwatch? Yes
 ```
 
-##### Finish install
+##### Move installed files.
 
-``` bash
-cd vue-signup-login
+- Cut the contents of the `vue-signup-login` sub-directory.
+- Paste them one level up in the project root.
+- Delete `vue-signup-login`.
+
+##### Finish install. (Takes about 8 minutes.)
+
+```
 npm install
 ```
 
@@ -54,6 +59,7 @@ npm test
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
  
-# Unit Testing Reference
-[Karma and Mocha](https://alligator.io/vuejs/unit-testing-karma-mocha/?utm_campaign=Revue%20newsletter&utm_medium=Newsletter&utm_source=revue)
+# References
+[vue-cli](https://github.com/vuejs/vue-cli)
+[Unit Testing with Karma and Mocha](https://alligator.io/vuejs/unit-testing-karma-mocha/?utm_campaign=Revue%20newsletter&utm_medium=Newsletter&utm_source=revue)
 
