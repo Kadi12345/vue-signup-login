@@ -28,7 +28,6 @@ vue init webpack vue-signup-login
 - Delete `vue-signup-login`.
 
 ##### Finish install. (Takes about 8 minutes.)
-
 ```
 npm install
 ```
