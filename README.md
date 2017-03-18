@@ -12,7 +12,7 @@ vue init webpack vue-signup-login
 ```
 ? Project name vue-signup-login
 ? Project description An authentication agnostic VueJS powered user sign up and login form component.
-? Author nu.everest <nu.everest@gmail.com>
+? Author [author name]
 ? Vue build standalone
 ? Install vue-router? Yes
 ? Use ESLint to lint your code? Yes
