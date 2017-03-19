@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import Signup from '@/components/Signup'
+import SignupLogin from '@/components/SignupLogin'
 
 export default {
   name: 'Parent',
   components: {
     login: {},
-    signup: Signup,
+    signup: SignupLogin,
     forgotpassword: {},
     changepassword: {},
     confirm: {}

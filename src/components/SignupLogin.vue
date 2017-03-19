@@ -44,7 +44,7 @@
 
 <script>
 export default {
-  name: 'Signup',
+  name: 'SignupLogin',
   data () {
     return {
       emailRE: /\S+@\S+/,
