@@ -6,6 +6,7 @@ An authentication agnostic VueJS powered user sign up and login form component.
 ``` bash
 npm install -g vue-cli       
 vue init webpack vue-signup-login
+npm install material-icons --save
 ```
 
 ##### Answer Initialization Questions
