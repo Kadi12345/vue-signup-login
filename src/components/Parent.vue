@@ -17,15 +17,14 @@ import SignupLogin from '@/components/SignupLogin'
 export default {
   name: 'Parent',
   components: {
-    login: {},
-    signup: SignupLogin,
+    signuplogin: SignupLogin,
     forgotpassword: {},
     changepassword: {},
     confirm: {}
   },
   computed: {
     currentForm: function () {
-      return 'signup'
+      return 'signuplogin'
     }
   }
 }
