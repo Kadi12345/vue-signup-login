@@ -1,25 +1,25 @@
 <template>
   <div class="small-12 medium-6 large-4 columns bgc-h76b852 same-height">
-    <div class="text-align-center font-size-32-s white margin-top-20">Create a Person <i class="material-icons font-size-36-i">&#xE84E;</i></div>
+    <div class="text-align-center font-size-32-s white margin-top-20">Sign Up or Login <i class="material-icons font-size-36-i">&#xE84E;</i></div>
 
     <div class="row">
       <div class="small-11 columns small-centered margin-top-20">
         <div class="width-93p bgc-white font-size-1 line-height-9 margin-0-auto">&nbsp;</div>
-        <form id="{[ input_id['creationform'] ]}" class="form input-underline" v-on:submit.prevent="addPerson">
+        <form id="userform] ]}" class="form input-underline" v-on:submit.prevent="addUser">
           <div class="row">
             <div class="small-12 columns">
-              First Name
-              <span class="hb85276 float-right" v-show="!validation.firstname">Required</span>
-              <span class="hb85276 float-right" v-show="validation.firstname && !validation.firstnamelength">Max Len {[ name_max_length ]}</span>
-              <input id="{[ input_id['firstname'] ]}" type="text" v-model="newPerson.firstname" placeholder="Xithurian" maxlength="{[ name_max_length ]}">
+              Email
+              <span class="hb85276 float-right" v-show="!validation.email">Required</span>
+              <span class="hb85276 float-right" v-show="validation.email && !validation.emaillength">Max Len {{ maxLength }}</span>
+              <input id="{[ input_id['email'] ]}" type="text" v-model="newUser.email" placeholder="me@this.com" v-bind:maxlength="maxLength">
             </div>
           </div>
 
           <div class="row margin-top-15">
             <div class="small-12 columns">
-              Last Name <span class="hb85276 float-right" v-show="!validation.lastname">Required</span>
-              <span class="hb85276 float-right" v-show="validation.lastname && !validation.lastnamelength">Max Len {[ name_max_length ]}</span>
-              <input id="{[ input_id['lastname'] ]}" type="text" v-model="newPerson.lastname" placeholder="Ulon" maxlength="{[ name_max_length ]}">
+              Password <span class="hb85276 float-right" v-show="!validation.password">Required</span>
+              <span class="hb85276 float-right" v-show="validation.password && !validation.passwordlength">Max Len {{ maxLength }}</span>
+              <input id="{[ input_id['password'] ]}" type="text" v-model="newUser.password" v-bind:maxlength="maxLength">
             </div>
           </div>
 
@@ -40,15 +40,22 @@
 
 <script>
 export default {
-  name: 'signup',
+  name: 'SignupLogin',
   data () {
     return {
       emailRE: /\S+@\S+/,
+      maxLength: 254,       // Email Maximum Length Reference: https://en.wikipedia.org/wiki/Email_address
       newUser: {
         email: '',
-        username: '',
         password: '',
         confirm_password: ''
+      }
+    }
+  },
+  method: {
+    addUser: function () {
+      if (this.isValid) {
+
       }
     }
   },
@@ -57,17 +64,16 @@ export default {
       return {
         email: !!this.newUser.email.trim(),
         email_format: this.emailRE.test(this.newUser.email),
-        username: !!this.newUser.username.trim(),
         password: !!this.newUser.password.trim(),
-        confirm_password: !!this.newUser.confirm_password.trim(),
+        confirm_password: !!this.newUser.confirm_password.trim()
       }
     },
     isValid: function () {
-      let validation = this.validation;
+      let validation = this.validation
       return Object.keys(validation).every(function (key) {
         return validation[key]
       })
-    },
-  },
+    }
+  }
 }
 </script>
