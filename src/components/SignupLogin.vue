@@ -16,6 +16,10 @@
         <span class="hb85276 float-right" v-show="validation.password && !validation.passwordlength">Max Len {{ maxLength }}</span>
         <input id="password" type="password" v-model="newUser.password" v-bind:maxlength="maxLength">
       </div>
+      <div class="small-12 columns">
+        <meter min="0" low="25" optimum="50" high="75" max="100" class="width-90p" v-bind:value="passwordScore"></meter>
+        <span class="padding-left-5">{{ passwordScore }}</span>
+      </div>
     </div>
 
     <div class="row margin-top-15">
@@ -85,7 +89,7 @@ export default {
         return validation[key]
       })
     },
-    scorePassword: function () {
+    passwordScore: function () {
       /**
        * Scores a password's strength.
        *
@@ -95,7 +99,7 @@ export default {
        * The passwords are scored on an integer scale with no upper or lower bound.
        * Scores less than 0 are set to 0.
        * Scores greater than 100 are set to 100.
-       * A safe password score is generally 49 points or more.
+       * A safe password score is generally 50 points or more.
        *
        * @param {String} pwd The password string to score.
        *

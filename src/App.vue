@@ -12,5 +12,6 @@ export default {
 </script>
 
 <style>
- @import "./assets/css/combined.min.css";
+  @import "./assets/css/blowdry.css";
+  @import "./assets/css/combined.min.css";
 </style>
