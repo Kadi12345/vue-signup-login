@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import SignupLogin from '@/components/SignupLogin'
+import Parent from '@/components/Parent'
 
 Vue.use(Router)
 
@@ -8,8 +8,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'SignupLogin',
-      component: SignupLogin
+      name: 'Parent',
+      component: Parent
     }
   ]
 })
