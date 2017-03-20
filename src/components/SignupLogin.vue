@@ -21,7 +21,7 @@
         <input id="password" type="password" class="margin-bottom-0-i" v-on:keyup="reactToScore" v-model="newUser.password" v-bind:maxlength="maxLength">
       </div>
       <!--Password Strength Indicator-->
-      <div class="small-12 columns margin-top-3">
+      <div class="small-12 columns margin-top-2">
         <div class="inline-block bgc-hf2f2f2 width-85p margin-top-5">
           <div v-bind:style="scorePercentStyle" class="height-0_8rem"></div>
         </div>
