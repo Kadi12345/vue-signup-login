@@ -22,9 +22,10 @@
       </div>
       <!--Password Strength Indicator-->
       <div class="small-12 columns margin-top-3">
-        <div class="inline-block bgc-hf2f2f2 width-85p">
-          <div v-bind:style="scorePercentStyle" class="height-0_9rem"></div>
+        <div class="inline-block bgc-hf2f2f2 width-85p margin-top-5">
+          <div v-bind:style="scorePercentStyle" class="height-0_8rem"></div>
         </div>
+
         <span v-bind:class="humanizedCSS">{{ passwordScore }}</span>
       </div>
     </div>
