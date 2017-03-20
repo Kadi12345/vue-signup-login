@@ -16,12 +16,12 @@
       <div class="small-12 columns">
         Password <span class="hb85276 float-right" v-show="!validation.password">Required</span>
         <span v-bind:class="humanizedCSS" v-show="validation.password && validation.passwordlength">{{ humanizedScore }}</span>
-        <span class="hb85276 float-right" v-show="validation.password && !validation.passwordlength">Max Len {{ maxLength }}</span>
+        <span class="hb85276 float-right" v-show="validation.password && validation.passwordstrength && !validation.passwordlength">Max Len {{ maxLength }}</span>
         <input id="password" type="password" v-model="newUser.password" v-bind:maxlength="maxLength">
       </div>
       <div class="small-12 columns">
         <meter min="0" low="25" optimum="50" high="75" max="100" class="width-90p" v-bind:value="passwordScore"></meter>
-        <span class="padding-left-5">{{ passwordScore }}</span>
+        <span v-bind:class="humanizedCSS">{{ passwordScore }}</span>
       </div>
     </div>
 
@@ -56,7 +56,7 @@ export default {
     return {
       emailRE: /\S+@\S+/,
       maxLength: 254,       // Email Maximum Length Reference: https://en.wikipedia.org/wiki/Email_address
-      minPasswordScore: 50, //
+      minPasswordScore: 25,
       newUser: {
         email: '',
         password: '',
@@ -82,6 +82,7 @@ export default {
         emaillength: this.newUser.email.trim().length <= this.maxLength,
         emailformat: this.emailRE.test(this.newUser.email),
         password: !!this.newUser.password.trim(),
+        passwordstrength: this.passwordScore >= this.minPasswordScore,
         passwordlength: this.newUser.password.trim().length <= this.maxLength,
         confirmpassword: !!this.newUser.confirmPassword.trim(),
         passwordsmatch: this.newUser.password.trim() === this.newUser.confirmPassword.trim()
@@ -113,7 +114,7 @@ export default {
        * @see https://stackoverflow.com/questions/948172/password-strength-meter/11268104#11268104
       **/
       let email = this.newUser.email
-      let password = this.newUser.password
+      let password = this.newUser.password.trim()
       let check, ltr, i, l
       let variation = 0
       let letters = {}
