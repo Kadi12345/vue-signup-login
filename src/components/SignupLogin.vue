@@ -17,10 +17,13 @@
         Password <span class="hb85276 float-right" v-show="!validation.password">Required</span>
         <span v-bind:class="humanizedCSS" v-show="validation.password && validation.passwordlength">{{ humanizedScore }}</span>
         <span class="hb85276 float-right" v-show="validation.password && validation.passwordstrength && !validation.passwordlength">Max Len {{ maxLength }}</span>
-        <input id="password" type="password" v-model="newUser.password" v-bind:maxlength="maxLength">
+
+        <input id="password" type="password" class="margin-bottom-0-i" v-on:keyup="reactToScore" v-model="newUser.password" v-bind:maxlength="maxLength">
       </div>
       <div class="small-12 columns">
-        <meter min="0" low="25" optimum="50" high="75" max="100" class="width-90p" v-bind:value="passwordScore"></meter>
+        <div class="inline-block bgc-hf2f2f2 width-85p">
+          <div v-bind:style="scorePercentStyle" class="height-0_9rem"></div>
+        </div>
         <span v-bind:class="humanizedCSS">{{ passwordScore }}</span>
       </div>
     </div>
@@ -61,13 +64,55 @@ export default {
         email: '',
         password: '',
         confirmPassword: ''
-      }
+      },
+      humanizedScore: 'Invalid',
+      humanizedCSS: 'float-right ',
+      scorePercentStyle: 'width: 0%; background-color: #b85276;'
     }
   },
-  method: {
+  methods: {
     addUser: function () {
       if (this.isValid) {
 
+      }
+    },
+    reactToScore: function () {
+      let score = this.passwordScore
+      let tooWeak = 'b85276'
+      let low = 'e4ad28'
+      let medium = '336699'
+      let strong = '488957'
+      let wow = '488957'
+
+      this.humanizedScore = 'Invalid'
+      this.humanizedCSS = 'float-right '
+      this.scorePercentStyle = 'width: 0%; background-color: #b85276;'
+
+      if (score < 25) {
+        this.humanizedScore = 'Too Weak'
+        this.humanizedCSS += ' h' + tooWeak
+        this.scorePercentStyle = 'width: ' + score + '%; background-color: #' + tooWeak + ';'
+      } else if (score < 50) {
+        this.humanizedScore = 'Low'
+        this.humanizedCSS += ' h' + low
+        this.scorePercentStyle = 'width: ' + score + '%; background-color: #' + low + ';'
+      } else if (score < 75) {
+        this.humanizedScore = 'Medium'
+        this.humanizedCSS += ' h' + medium
+        this.scorePercentStyle = 'width: ' + score + '%; background-color: #' + medium + ';'
+      } else if (score < 100) {
+        this.humanizedScore = 'Strong'
+        this.humanizedCSS += ' h' + strong
+        this.scorePercentStyle = 'width: ' + score + '%; background-color: #' + strong + ';'
+      } else if (score >= 100) {
+        this.humanizedScore = 'Wow!'
+        this.humanizedCSS += ' bold h' + wow
+        this.scorePercentStyle = 'width: ' + score + '%; background-color: #' + wow + ';'
+      } else {
+        console.error('invalid password score')
+        this.humanizedScore = 'Invalid'
+        this.humanizedCSS += ' h' + tooWeak
+        this.scorePercentStyle = 'width: 0%; background-color: #' + tooWeak + ';'
       }
     }
   },
@@ -160,47 +205,6 @@ export default {
       if (score < lowerBound) { score = lowerBound }
 
       return parseInt(score)
-    },
-    humanizedScore: function () {
-      let score = this.passwordScore
-      let humanized = 'Invalid'
-
-      if (score < 25) {
-        humanized = 'Too Weak'
-      } else if (score < 50) {
-        humanized = 'Low'
-      } else if (score < 75) {
-        humanized = 'Medium'
-      } else if (score < 100) {
-        humanized = 'Strong'
-      } else if (score >= 100) {
-        humanized = 'Wow!'
-      } else {
-        console.error('invalid password score')
-        humanized = 'Invalid'
-      }
-
-      return humanized
-    },
-    humanizedCSS: function () {
-      let score = this.passwordScore
-      let humanized = 'float-right '
-
-      if (score < 25) {
-        humanized += ' hb85276 '
-      } else if (score < 50) {
-        humanized += ' he4ad28 '
-      } else if (score < 75) {
-        humanized += ' h336699 '
-      } else if (score < 100) {
-        humanized += ' h488957 '
-      } else if (score >= 100) {
-        humanized += ' h488957 bold '
-      } else {
-        humanized += ' hb85276 '
-      }
-
-      return humanized
     }
   }
 }
