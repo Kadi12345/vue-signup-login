@@ -1,5 +1,7 @@
 <template>
   <form id="userform" class="form input-underline" v-on:submit.prevent="addUser">
+    <div class="display-none he4ad28 h336699 h488957 h6a3072" v-show="false"></div>
+
     <div class="row">
       <div class="small-12 columns padding-top-20">
         Email
@@ -13,6 +15,7 @@
     <div class="row margin-top-15">
       <div class="small-12 columns">
         Password <span class="hb85276 float-right" v-show="!validation.password">Required</span>
+        <span v-bind:class="humanizedCSS" v-show="validation.password && validation.passwordlength">{{ humanizedScore }}</span>
         <span class="hb85276 float-right" v-show="validation.password && !validation.passwordlength">Max Len {{ maxLength }}</span>
         <input id="password" type="password" v-model="newUser.password" v-bind:maxlength="maxLength">
       </div>
@@ -53,6 +56,7 @@ export default {
     return {
       emailRE: /\S+@\S+/,
       maxLength: 254,       // Email Maximum Length Reference: https://en.wikipedia.org/wiki/Email_address
+      minPasswordScore: 50, //
       newUser: {
         email: '',
         password: '',
@@ -93,7 +97,7 @@ export default {
       /**
        * Scores a password's strength.
        *
-       * It scores a password according to character variation, repetition, username similarity, common patterns,
+       * It scores a password according to character variation, repetition, email similarity, common patterns,
        * and length.
        *
        * The passwords are scored on an integer scale with no upper or lower bound.
@@ -155,6 +159,47 @@ export default {
       if (score < lowerBound) { score = lowerBound }
 
       return parseInt(score)
+    },
+    humanizedScore: function () {
+      let score = this.passwordScore
+      let humanized = 'Invalid'
+
+      if (score < 25) {
+        humanized = 'Too Weak'
+      } else if (score < 50) {
+        humanized = 'Low'
+      } else if (score < 75) {
+        humanized = 'Medium'
+      } else if (score < 100) {
+        humanized = 'Strong'
+      } else if (score >= 100) {
+        humanized = 'Wow!'
+      } else {
+        console.error('invalid password score')
+        humanized = 'Invalid'
+      }
+
+      return humanized
+    },
+    humanizedCSS: function () {
+      let score = this.passwordScore
+      let humanized = 'float-right '
+
+      if (score < 25) {
+        humanized += ' hb85276 '
+      } else if (score < 50) {
+        humanized += ' he4ad28 '
+      } else if (score < 75) {
+        humanized += ' h336699 '
+      } else if (score < 100) {
+        humanized += ' h488957 '
+      } else if (score >= 100) {
+        humanized += ' h488957 bold '
+      } else {
+        humanized += ' hb85276 '
+      }
+
+      return humanized
     }
   }
 }
