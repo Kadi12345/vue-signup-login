@@ -1,5 +1,5 @@
 <template>
-  <form id="userform" class="form input-underline" v-on:submit.prevent="addUser">
+  <form id="signupform" class="form input-underline" v-on:submit.prevent="addUser">
     <div class="display-none he4ad28 h336699 h488957 h6a3072" v-show="false"></div>
 
     <div class="row">
@@ -20,7 +20,7 @@
 
         <input id="password" type="password" class="margin-bottom-0-i" v-on:keyup="reactToScore" v-model="newUser.password" v-bind:maxlength="maxLength">
       </div>
-      <!--Password Strength Indicator-->
+      <!--Password Strength Indicator TODO: Allow this to be disabled.-->
       <div class="small-12 columns margin-top-2">
         <div class="inline-block bgc-hf2f2f2 width-85p margin-top-5">
           <div v-bind:style="scorePercentStyle" class="height-0_8rem"></div>
@@ -56,7 +56,7 @@
 
 <script>
 export default {
-  name: 'SignupLogin',
+  name: 'Signup',
   data () {
     return {
       emailRE: /\S+@\S+/,

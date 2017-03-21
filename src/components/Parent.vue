@@ -1,6 +1,6 @@
 <template>
   <div class="small-12 medium-7 large-5 small-centered columns bgc-h76b852 border-radius-3 margin-top-35">
-    <div class="text-align-center font-size-32-s white padding-top-20">Sign Up or Login <i class="material-icons font-size-36-i">&#xE85E</i></div>
+    <div class="text-align-center font-size-32-s white padding-top-20">{{ instructions }} <i class="material-icons font-size-36-i">&#xE85E</i></div>
 
     <div class="row">
       <div class="small-11 columns small-centered margin-top-20">
@@ -12,19 +12,33 @@
 </template>
 
 <script>
-import SignupLogin from '@/components/SignupLogin'
+import Login from '@/components/Login'
+import Signup from '@/components/Signup'
 
 export default {
   name: 'Parent',
   components: {
-    signuplogin: SignupLogin,
+    login: Login,
+    signup: Signup,
     forgotpassword: {},
     changepassword: {},
     confirm: {}
   },
+  data () {
+    return {
+      instructions: 'Sign Up or Login',
+      knownEmails: ['a@b', 'test@test.com'],
+      email: ''
+    }
+  },
+  methods: {
+    userExists: function () {
+      return this.knownEmails.indexOf(this.user.email) >= 0
+    }
+  },
   computed: {
     currentForm: function () {
-      return 'signuplogin'
+      return 'login'
     }
   }
 }
