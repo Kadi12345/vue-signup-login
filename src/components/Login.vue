@@ -6,6 +6,9 @@
       <div class="small-12 columns padding-top-20">
         Email
         <span class="hb85276 float-right" v-show="!validation.email">Required</span>
+        <span class="hb85276 float-right" v-show="validation.email && !validation.emaillength">Max Len {{ maxLength }}</span>
+        <span class="hb85276 float-right" v-show="validation.email && validation.emaillength && !validation.emailformat">Example: me@a.com</span>
+        <span class="hb85276 float-right" v-show="validation.email && validation.emaillength && validation.emailformat && !validation.emailexists">Not Found</span>
         <input id="email" type="text" v-model="user.email" placeholder="me@a.com" v-bind:maxlength="maxLength">
       </div>
     </div>
@@ -13,15 +16,15 @@
     <div class="row margin-top-15">
       <div class="small-12 columns">
         Password <span class="hb85276 float-right" v-show="!validation.password">Required</span>
-        <input id="password" type="password" class="margin-bottom-0-i" v-on:keyup="reactToScore" v-model="user.password" v-bind:maxlength="maxLength">
+        <input id="password" type="password" class="margin-bottom-0-i" v-model="user.password" v-bind:maxlength="maxLength">
       </div>
     </div>
 
     <div class="row margin-top-20 text-align-center">
-      <div class="small-6 columns" v-on:click="forgotPassword">Forgot Password</div>
-      <div class="small-6 columns" v-on:click="signup">Sign Up</div>
+      <div class="small-6 columns text-align-left" v-on:click="forgotPassword">Forgot Password</div>
+      <div class="small-6 columns text-align-right" v-on:click="signup">Sign Up</div>
 
-      <div class="small-12 columns">
+      <div class="small-12 columns margin-top-20">
         <button id="submit" class="button font-size-20-s padding-16-s-i border-radius-5" v-bind:disabled="!isValid" type="submit" name="submit">
           <span>Login</span>
         </button>
@@ -35,6 +38,9 @@ export default {
   name: 'Login',
   data () {
     return {
+      emailRE: /\S+@\S+/,
+      maxAttempts: 10,
+      maxLength: 254,       // Email Maximum Length Reference: https://en.wikipedia.org/wiki/Email_address
       user: {
         email: '',
         password: ''
@@ -50,14 +56,20 @@ export default {
     forgotPassword: function () {
       this.$emit('forgotPassword')
     },
-    signUp: function () {
-
+    signup: function () {
+      this.$emit('signup')
+    },
+    emailExists: function () {
+      return false
     }
   },
   computed: {
     validation: function () {
       return {
         email: !!this.user.email.trim(),
+        emaillength: this.user.email.trim().length <= this.maxLength,
+        emailformat: this.emailRE.test(this.user.email),
+        emailexists: this.emailExists(),
         password: !!this.user.password.trim()
       }
     },
