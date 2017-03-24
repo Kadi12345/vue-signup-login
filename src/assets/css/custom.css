@@ -1,2 +1,36 @@
+/* Normalize Input Box */
+input[type="text"],
+input[type="date"],
+input[type="password"] {
+  margin: 0.25rem 0 0 0;
+  font-family: sans-serif;
+  color: #111111;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: unset;
+}
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="password"]:focus {
+  outline: none;
+}
 
-
+/* Underline Input Box */
+.input-underline input[type="text"],
+.input-underline input[type="date"],
+.input-underline input[type="password"] {
+  padding: 10px;
+  border: none;
+  border-bottom: solid 1px #c9c9c9;
+  transition: border 0.3s;
+}
+.input-underline input[type="text"]:focus,
+.input-underline input[type="text"].focus,
+.input-underline input[type="date"]:focus,
+.input-underline input[type="date"].focus,
+.input-underline input[type="password"]:focus,
+.input-underline input[type="password"].focus {
+  border: none;
+  border-bottom: solid 1px #969696;
+}
