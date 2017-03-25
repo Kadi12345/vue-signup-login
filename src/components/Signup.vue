@@ -51,6 +51,13 @@
         </button>
       </div>
     </div>
+
+    <div class="row text-align-center margin-top-10">
+      <div class="small-12 columns">
+        Already a member?
+        <span class="cursor-pointer h1779ba he4ad28-hover" v-show="userExists" v-on:click="login">Login</span>
+      </div>
+    </div>
   </form>
 </template>
 
@@ -77,6 +84,10 @@ export default {
       if (this.isValid) {
 
       }
+    },
+    login: function () {
+//      console.log('sign up clicked')
+      this.$emit('switchcomponent', ['login', 'Login', this.newUser.email])
     },
     reactToScore: function () {
       let score = this.passwordScore

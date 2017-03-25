@@ -22,8 +22,8 @@
     </div>
 
     <div class="row margin-top-20 text-align-center" v-show="validation.emailexists">
-      <div class="small-6 columns text-align-left cursor-pointer h1779ba black-hover" v-on:click="forgotPassword">Forgot Password</div>
-      <div class="small-6 columns text-align-right cursor-pointer h1779ba black-hover" v-on:click="signup">Sign Up</div>
+      <div class="small-6 columns text-align-left cursor-pointer h1779ba he4ad28-hover" v-on:click="forgotPassword">Forgot Password</div>
+      <div class="small-6 columns text-align-right cursor-pointer h1779ba he4ad28-hover" v-on:click="signup">Sign Up</div>
 
       <div class="small-12 columns margin-top-20">
         <button id="submit" class="button font-size-20-s padding-16-s-i border-radius-5" v-bind:disabled="!isValid" type="submit" name="submit">
