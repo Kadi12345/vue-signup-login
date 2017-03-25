@@ -38,6 +38,7 @@ export default {
     }
   },
   methods: {
+    // https://forum.vuejs.org/t/vue2-0-parent-component-cannot-listen-to-emit-event-in-child-component-by-on/2336/3
     switchComponent: function (componentArgs) {
       // componentArgs format: [name, title, email (Use empty string if N/A.)]
       console.log('component: ' + componentArgs)
