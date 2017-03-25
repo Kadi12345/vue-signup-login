@@ -29,22 +29,35 @@ export default {
     return {
       title: 'Sign Up or Login',
       email: '',
-      currentForm: 'login'
+      currentForm: 'login',
+      nameIndex: 0,
+      titleIndex: 1,
+      emailIndex: 2,
+      exactLength: 3
     }
   },
   methods: {
     switchComponent: function (componentArgs) {
-      // compontentArgs format: [name, title, email (Use empty string if N/A.)]
-      let name = 0
-      let title = 1
-      let email = 2
+      // componentArgs format: [name, title, email (Use empty string if N/A.)]
       console.log('component: ' + componentArgs)
-      this.currentForm = componentArgs[name]
-      this.title = componentArgs[title]
-      this.email = componentArgs[email]
+
+      if (this.isValidComponentArgs(componentArgs)) {
+        this.currentForm = componentArgs[this.nameIndex]
+        this.title = componentArgs[this.titleIndex]
+        this.email = componentArgs[this.emailIndex]
+      }
     },
-    isValidComponent: function (componentArgs) {
-      return false
+    validation: function (componentArgs) {
+      return {
+        argslength: componentArgs.length === this.exactLength,
+        ischildcomponent: true
+      }
+    },
+    isValidComponentArgs: function (componentArgs) {
+      let validation = this.validation(componentArgs)
+      return Object.keys(validation).every(function (key) {
+        return validation[key]
+      })
     }
   }
 }
