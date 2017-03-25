@@ -28,7 +28,7 @@ export default {
   },
   data () {
     return {
-      title: 'Sign Up or Login',
+      title: 'Login or Sign Up',
       email: '',
       currentForm: 'login',
       nameIndex: 0,
