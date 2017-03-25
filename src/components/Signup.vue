@@ -64,13 +64,14 @@
 <script>
 export default {
   name: 'Signup',
+  props: ['emailentry'],
   data () {
     return {
       emailRE: /\S+@\S+/,
       maxLength: 254,       // Email Maximum Length Reference: https://en.wikipedia.org/wiki/Email_address
       minPasswordScore: 25,
       newUser: {
-        email: '',
+        email: this.emailentry,
         password: '',
         confirmPassword: ''
       },

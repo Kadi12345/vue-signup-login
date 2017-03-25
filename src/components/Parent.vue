@@ -5,23 +5,23 @@
     <div class="row">
       <div class="small-11 columns small-centered margin-top-35">
         <div class="width-93p bgc-white font-size-1 line-height-9 margin-0-auto">&nbsp</div>
-          <component v-bind:is="currentForm" v-on:switchcomponent="switchComponent"></component>
+          <component v-bind:is="currentForm" v-bind:emailentry="email" v-on:switchcomponent="switchComponent"></component>
         </div>
     </div>
-
   </div>
 </template>
 
 <script>
 import Login from '@/components/Login'
 import Signup from '@/components/Signup'
+import ForgotPassword from '@/components/ForgotPassword'
 
 export default {
   name: 'Parent',
   components: {
     login: Login,
     signup: Signup,
-    forgotpassword: {},
+    forgotpassword: ForgotPassword,
     changepassword: {},
     confirmemail: {},
     loginsuccess: {}

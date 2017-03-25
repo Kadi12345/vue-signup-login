@@ -47,13 +47,14 @@
 <script>
 export default {
   name: 'Login',
+  props: ['emailentry'],
   data () {
     return {
       emailRE: /\S+@\S+/,
       maxAttempts: 10,
       maxLength: 254,       // Email Maximum Length Reference: https://en.wikipedia.org/wiki/Email_address
       user: {
-        email: '',
+        email: this.emailentry,
         password: ''
       },
       knownEmails: ['a@b', 'test@test.com']
@@ -67,7 +68,7 @@ export default {
     },
     forgotPassword: function () {
 //      console.log('forgotPassword clicked')
-      this.$emit('switchcomponent', ['forgotpassword', 'Reset Password', this.user.email])
+      this.$emit('switchcomponent', ['forgotpassword', 'Forgot Password', this.user.email])
     },
     signup: function () {
 //      console.log('sign up clicked')
