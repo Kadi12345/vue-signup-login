@@ -50,9 +50,10 @@ export default {
       }
     },
     validation: function (componentArgs) {
+      // http://stackoverflow.com/a/43011710/1783439
       return {
         argslength: componentArgs.length === this.exactLength,
-        ischildcomponent: true
+        ischildcomponent: !!this.$options.components[componentArgs[this.nameIndex]]
       }
     },
     isValidComponentArgs: function (componentArgs) {
