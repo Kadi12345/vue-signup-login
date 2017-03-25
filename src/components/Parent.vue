@@ -1,6 +1,6 @@
 <template>
-  <div class="small-12 medium-7 large-5 small-centered columns bgc-h76b852 border-radius-3 margin-top-35">
-    <div class="text-align-center font-size-32-s white padding-top-20">{{ title }} <i class="material-icons font-size-36-i">&#xE85E</i></div>
+  <div class="small-12 medium-7 large-5 small-centered columns bgc-h76b852 border-radius-3 margin-top-20">
+    <div class="row text-align-center font-size-32-s white padding-top-20">{{ title }} <i class="material-icons font-size-36-i">&#xE85E</i></div>
 
     <div class="row">
       <div class="small-11 columns small-centered margin-top-20">
@@ -8,6 +8,7 @@
           <component v-bind:is="currentForm" v-on:switchcomponent="switchComponent"></component>
         </div>
     </div>
+
   </div>
 </template>
 
