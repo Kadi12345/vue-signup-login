@@ -10,7 +10,7 @@
         <span class="hb85276 float-right" v-show="validation.email && validation.emaillength && !validation.emailformat">Example: me@a.com</span>
         <span class="float-right cursor-pointer h1779ba black-hover" v-show="validation.email && validation.emaillength && validation.emailformat && !validation.emailexists" v-on:click="signup">Sign Up</span>
 
-        <input id="email" type="text" v-model="user.email" placeholder="me@a.com" v-bind:maxlength="maxLength">
+        <input id="email" type="text" v-model="user.email" placeholder="me@a.com" v-on:keyup.enter="submitEmail" v-bind:maxlength="maxLength">
       </div>
     </div>
 
@@ -66,16 +66,23 @@ export default {
       }
     },
     forgotPassword: function () {
-      console.log('forgotPassword clicked')
+//      console.log('forgotPassword clicked')
       this.$emit('switchcomponent', ['forgotpassword', 'Reset Password', this.user.email])
     },
     signup: function () {
-      console.log('sign up clicked')
+//      console.log('sign up clicked')
       this.$emit('switchcomponent', ['signup', 'Sign Up', this.user.email])
     },
     emailExists: function () {
       // https://jsperf.com/lodash-includes-vs-array-prototype-indexof
       return this.knownEmails.indexOf(this.user.email) > -1
+    },
+    submitEmail: function () {
+      let validation = this.validation
+
+      if (validation.email && validation.emaillength && validation.emailformat && !validation.emailexists) {
+        this.signup()
+      }
     }
   },
   computed: {
