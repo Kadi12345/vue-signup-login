@@ -2,6 +2,8 @@
   <form id="signupform" class="form input-underline" v-on:submit.prevent="addUser">
     <div class="display-none he4ad28 h336699 h488957 h6a3072" v-show="false"></div>
 
+    <social></social>
+
     <div class="row">
       <div class="small-12 columns padding-top-20">
         Email
@@ -62,9 +64,14 @@
 </template>
 
 <script>
+import Social from '@/components/Social'
+
 export default {
   name: 'Signup',
   props: ['emailentry'],
+  components: {
+    social: Social
+  },
   data () {
     return {
       emailRE: /\S+@\S+/,

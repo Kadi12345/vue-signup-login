@@ -2,20 +2,7 @@
   <form id="loginform" class="form input-underline" v-on:submit.prevent="loginUser">
     <div class="display-none he4ad28 h336699 h488957 h6a3072" v-show="false"></div>
 
-    <div class="row">
-      <div class="small-12 columns text-align-center">
-        <a href="#" class="social-button" id="facebook-connect"></a>
-        <a href="#" class="social-button" id="google-connect"></a>
-        <a href="#" class="social-button" id="twitter-connect"></a>
-        <a href="#" class="social-button" id="github-connect"></a>
-      </div>
-    </div>
-
-    <div class="row text-align-center">
-      <div class="small-12 columns font-size-13 hc4c4c4">
-        &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&nbsp; OR &nbsp;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
-      </div>
-    </div>
+    <social></social>
 
     <div class="row">
       <div class="small-12 columns padding-top-15">
@@ -60,9 +47,14 @@
 </template>
 
 <script>
+import Social from '@/components/Social'
+
 export default {
   name: 'Login',
   props: ['emailentry'],
+  components: {
+    social: Social
+  },
   data () {
     return {
       emailRE: /\S+@\S+/,
