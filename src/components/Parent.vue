@@ -22,7 +22,8 @@ export default {
     login: Login,
     signup: Signup,
     forgotpassword: ForgotPassword,
-    changepassword: {},
+    resetpassword: {},    // requires email confirmation link
+    changepassword: {},   // requires current password
     confirmemail: {},
     loginsuccess: {}
   },
