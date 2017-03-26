@@ -13,12 +13,12 @@
 
     <div class="row text-align-center">
       <div class="small-12 columns font-size-13 hc4c4c4">
-        &#8212;&#8212;&#8212;&#8212;&nbsp; OR &nbsp;&#8212;&#8212;&#8212;&#8212;
+        &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&nbsp; OR &nbsp;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
       </div>
     </div>
 
     <div class="row">
-      <div class="small-12 columns padding-top-20">
+      <div class="small-12 columns padding-top-15">
         Email
         <span class="hb85276 float-right" v-show="!validation.email">Required</span>
         <span class="hb85276 float-right" v-show="validation.email && !validation.emaillength">Max Len {{ maxLength }}</span>
