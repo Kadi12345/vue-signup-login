@@ -60,32 +60,14 @@ input[type="password"]:focus {
 	  background: rgb(60, 90, 154) url('https://eswarasai.com/projects/social-login/img/facebook-white.svg') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
 }
 
-#facebook-connect span {
-	  box-sizing: border-box;
-    color: rgb(60, 90, 154);
-    cursor: pointer;
-    text-align: center;
-    border: 0px none rgb(255, 255, 255);
-    outline: rgb(255, 255, 255) none 0px;
-}
-
 #google-connect {
-    background: rgb(255, 255, 255) url('https://eswarasai.com/projects/social-login/img/google-plus.png') no-repeat scroll 0px 0px / 55px 55px padding-box border-box;
+    background: rgb(255, 255, 255) url('https://eswarasai.com/projects/social-login/img/google-plus.png') no-repeat scroll -3px -8px / 56px 63px padding-box border-box;
     border: 1px solid rgb(220, 74, 61);
 }
 
 #google-connect:hover {
 	  border-color: rgb(220, 74, 61);
-	  background: rgb(220, 74, 61) url('https://eswarasai.com/projects/social-login/img/google-plus-white.png') no-repeat scroll 0px 0px / 55px 55px padding-box border-box;
-}
-
-#google-connect span {
-	  box-sizing: border-box;
-    color: rgb(220, 74, 61);
-    cursor: pointer;
-    text-align: center;
-    border: 0px none rgb(220, 74, 61);
-    outline: rgb(255, 255, 255) none 0px;
+	  background: rgb(220, 74, 61) url('https://eswarasai.com/projects/social-login/img/google-plus-white.png') no-repeat scroll -3px -8px / 56px 63px padding-box border-box;
 }
 
 #twitter-connect {
@@ -98,15 +80,6 @@ input[type="password"]:focus {
 	  background: rgb(85, 172, 238) url('https://eswarasai.com/projects/social-login/img/twitter-white.png') no-repeat scroll 3px 1px / 45px 45px padding-box border-box;
 }
 
-#twitter-connect span {
-	  box-sizing: border-box;
-    color: rgb(85, 172, 238);
-    cursor: pointer;
-    text-align: center;
-    border: 0px none rgb(220, 74, 61);
-    outline: rgb(255, 255, 255) none 0px;
-}
-
 #github-connect {
     background: rgb(255, 255, 255) url('../img/auth_service_github.svg') no-repeat scroll 10px / 30px 48px padding-box border-box;
     border: 1px solid rgb(0, 0, 0);
@@ -115,13 +88,4 @@ input[type="password"]:focus {
 #github-connect:hover {
 	  background: rgb(0, 0, 0) url('../img/auth_service_github_white.svg') no-repeat scroll 10px 0px / 30px 48px padding-box border-box;
     border-color: rgb(0, 0, 0);
-}
-
-#github-connect span {
-	  box-sizing: border-box;
-    color: rgb(0, 0, 0);
-    cursor: pointer;
-    text-align: center;
-    border: 0px none rgb(0, 0, 0);
-    outline: rgb(0, 255, 255) none 0px;
 }
