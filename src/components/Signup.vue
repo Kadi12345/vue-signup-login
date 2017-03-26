@@ -39,7 +39,7 @@
       </div>
     </div>
 
-    <div class="row text-align-center">
+    <div class="row text-align-center padding-top-10">
       <div class="small-12 columns">
         <span class="hb85276" v-show="!validation.confirmpassword || validation.passwordsmatch">&nbsp</span>
         <span class="hb85276" v-show="validation.confirmpassword && !validation.passwordsmatch">Passwords Must Match</span>
