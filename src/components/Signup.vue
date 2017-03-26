@@ -5,7 +5,7 @@
     <social></social>
 
     <div class="row">
-      <div class="small-12 columns padding-top-20">
+      <div class="small-12 columns padding-top-10">
         Email
         <span class="hb85276 float-right" v-show="!validation.email">Required</span>
         <span class="hb85276 float-right" v-show="validation.email && !validation.emaillength">Max Len {{ maxLength }}</span>
@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <div class="row margin-top-20 text-align-center">
+    <div class="row margin-top-10 text-align-center">
       <div class="small-12 columns">
         <button id="submit" class="button font-size-20-s padding-16-s-i border-radius-5" v-bind:disabled="!isValid" type="submit" name="submit">
           <span>Sign Up</span>
