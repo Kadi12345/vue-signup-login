@@ -3,6 +3,7 @@ import Login from '@/components/Login'
 
 // ExpectJS reference: https://github.com/Automattic/expect.js
 describe('Login.vue', () => {
+  /* Email Input */
   it(`Render emailentry in email input field.`, () => {
     // Extend the component to get the constructor, which we can then initialize directly.
     let email = 'a@b.com'
@@ -121,4 +122,46 @@ describe('Login.vue', () => {
       done()
     })
   })
+
+  /* Password Input */
+  it(`Render 'Required' message all others hidden (no password input).`, () => {
+    // Extend the component to get the constructor, which we can then initialize directly.
+    let email = 'a@b'
+    let expectedValidation = 'Required'
+    const Constructor = Vue.extend(Login)
+    const component = new Constructor({
+      propsData: {
+        emailentry: email
+      }
+    }).$mount()
+
+    expect(component.$el.querySelector('#password-required').textContent).to.equal(expectedValidation)
+
+    // Show 'Required' message.
+    expect(component.$el.querySelector('#password-required').style.display).to.not.equal('none')
+  })
+
+  // it(`Hide 'Required' message (password input contains data).`, done => {
+  //   // Extend the component to get the constructor, which we can then initialize directly.
+  //   let email = 'a@b'
+  //   const Constructor = Vue.extend(Login)
+  //   const component = new Constructor({
+  //     propsData: {
+  //       emailentry: email
+  //     }
+  //   }).$mount()
+  //
+  //   let password = '123'
+  //   component.$el.querySelector('#password').value = password
+  //   expect(component.$el.querySelector('#password').value).to.equal(password)
+  //
+  //   // Confirm 'Required' message is hidden.
+  //   Vue.nextTick(() => {
+  //     expect(component.$el.querySelector('#password-required').style.display).to.equal('none')
+  //
+  //     // expect(component.validation.password).to.equal(true)
+  //     // expect(!!component.user.password.trim()).to.equal(true)
+  //     done()
+  //   })
+  // })
 })

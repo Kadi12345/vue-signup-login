@@ -18,7 +18,7 @@
 
     <div class="row margin-top-15" v-show="validation.emailexists">
       <div class="small-12 columns">
-        Password <span class="hb85276 float-right" v-show="!validation.password">Required</span>
+        Password <span id="password-required" class="hb85276 float-right" v-show="!validation.password">Required</span>
         <input id="password" type="password" class="margin-bottom-0-i" v-model="user.password" v-bind:maxlength="maxLength">
       </div>
     </div>
