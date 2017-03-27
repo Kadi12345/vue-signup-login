@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="row margin-top-15" v-show="validation.emailexists">
+    <div id="password-section" class="row margin-top-15" v-show="validation.emailexists">
       <div class="small-12 columns">
         Password <span id="password-required" class="hb85276 float-right" v-show="!validation.password">Required</span>
         <input id="password" type="password" class="margin-bottom-0-i" v-model="user.password" v-bind:maxlength="maxLength">
@@ -36,7 +36,7 @@
 
     <div class="row margin-top-20 text-align-center">
       <div class="small-12 columns margin-top-20">
-        <button class="button font-size-20-s padding-16-s-i border-radius-5" v-on:click="signup"
+        <button id="signup-button" class="button font-size-20-s padding-16-s-i border-radius-5" v-on:click="signup"
                 v-show="validation.email && validation.emaillength && validation.emailformat && !validation.emailexists"
                 type="submit" name="sign-up">
           <span>Sign Up</span>

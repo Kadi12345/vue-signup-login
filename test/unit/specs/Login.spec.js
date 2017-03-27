@@ -118,7 +118,10 @@ describe('Login.vue', () => {
       expect(component.$el.querySelector('#email-required').style.display).to.equal('none')
       expect(component.$el.querySelector('#email-max-length').style.display).to.equal('none')
       expect(component.$el.querySelector('#email-example').style.display).to.equal('none')
+      // Input Message
       expect(component.$el.querySelector('#email-not-found').style.display).to.not.equal('none')
+      // Sign Up Button
+      expect(component.$el.querySelector('#signup-button').style.display).to.not.equal('none')
       done()
     })
   })
@@ -161,6 +164,45 @@ describe('Login.vue', () => {
   //
   //     // expect(component.validation.password).to.equal(true)
   //     // expect(!!component.user.password.trim()).to.equal(true)
+  //     done()
+  //   })
+  // })
+
+  /* Login Button */
+  it(`Login Button displayed but disabled (valid email provided no password).`, done => {
+    let email = 'a@b'
+    const Constructor = Vue.extend(Login)
+    const component = new Constructor({
+      propsData: {
+        emailentry: email
+      }
+    }).$mount()
+
+    Vue.nextTick(() => {
+      expect(component.$el.querySelector('#password-section').style.display).to.not.equal('none')
+      expect(component.$el.querySelector('#submit').style.display).to.not.equal('none')
+      expect(component.$el.querySelector('#submit').disabled).to.equal(true)
+      done()
+    })
+  })
+
+  // it(`Login Button displayed and enabled (valid email provided with an a proposed password).`, done => {
+  //   let email = 'a@b'
+  //   const Constructor = Vue.extend(Login)
+  //   const component = new Constructor({
+  //     propsData: {
+  //       emailentry: email
+  //     }
+  //   }).$mount()
+  //
+  //   let password = '123'
+  //   component.$el.querySelector('#password').value = password
+  //   expect(component.$el.querySelector('#password').value).to.equal(password)
+  //
+  //   Vue.nextTick(() => {
+  //     expect(component.$el.querySelector('#password-section').style.display).to.not.equal('none')
+  //     expect(component.$el.querySelector('#submit').style.display).to.not.equal('none')
+  //     expect(component.$el.querySelector('#submit').disabled).to.equal(false)
   //     done()
   //   })
   // })
