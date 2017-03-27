@@ -7,10 +7,10 @@
     <div class="row">
       <div class="small-12 columns padding-top-15">
         Email
-        <span class="hb85276 float-right" v-show="!validation.email">Required</span>
-        <span class="hb85276 float-right" v-show="validation.email && !validation.emaillength">Max Len {{ maxLength }}</span>
-        <span class="hb85276 float-right" v-show="validation.email && validation.emaillength && !validation.emailformat">Example: me@a.com</span>
-        <span class="float-right cursor-pointer h1779ba black-hover" v-show="validation.email && validation.emaillength && validation.emailformat && !validation.emailexists" v-on:click="signup">Sign Up</span>
+        <span id="email-required" class="hb85276 float-right" v-show="!validation.email">Required</span>
+        <span id="email-max-length" class="hb85276 float-right" v-show="validation.email && !validation.emaillength">Max Len {{ maxLength }}</span>
+        <span id="email-example" class="hb85276 float-right" v-show="validation.email && validation.emaillength && !validation.emailformat">Example: me@a.com</span>
+        <span id="email-not-found" class="float-right cursor-pointer h1779ba black-hover" v-show="validation.email && validation.emaillength && validation.emailformat && !validation.emailexists" v-on:click="signup">Sign Up</span>
 
         <input id="email" type="text" v-model="user.email" placeholder="me@a.com" v-on:keyup.enter="submitEmail" v-bind:maxlength="maxLength">
       </div>
