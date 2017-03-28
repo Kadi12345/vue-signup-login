@@ -144,29 +144,30 @@ describe('Login.vue', () => {
     expect(component.$el.querySelector('#password-required').style.display).to.not.equal('none')
   })
 
-  // it(`Hide 'Required' message (password input contains data).`, done => {
-  //   // Extend the component to get the constructor, which we can then initialize directly.
-  //   let email = 'a@b'
-  //   const Constructor = Vue.extend(Login)
-  //   const component = new Constructor({
-  //     propsData: {
-  //       emailentry: email
-  //     }
-  //   }).$mount()
-  //
-  //   let password = '123'
-  //   component.$el.querySelector('#password').value = password
-  //   expect(component.$el.querySelector('#password').value).to.equal(password)
-  //
-  //   // Confirm 'Required' message is hidden.
-  //   Vue.nextTick(() => {
-  //     expect(component.$el.querySelector('#password-required').style.display).to.equal('none')
-  //
-  //     // expect(component.validation.password).to.equal(true)
-  //     // expect(!!component.user.password.trim()).to.equal(true)
-  //     done()
-  //   })
-  // })
+  it(`Hide 'Required' message (password input contains data).`, done => {
+    // Extend the component to get the constructor, which we can then initialize directly.
+    let email = 'a@b'
+    let thePassword = '123'
+    const Constructor = Vue.extend(Login)
+    const component = new Constructor({
+      propsData: {
+        emailentry: email
+      },
+      data: {
+        user: {
+          password: thePassword
+        }
+      }
+    }).$mount()
+
+    expect(component.$el.querySelector('#password').value).to.equal(thePassword)
+
+    // Confirm 'Required' message is hidden.
+    Vue.nextTick(() => {
+      expect(component.$el.querySelector('#password-required').style.display).to.equal('none')
+      done()
+    })
+  })
 
   /* Login Button */
   it(`Login Button displayed but disabled (valid email provided no password).`, done => {
@@ -186,24 +187,28 @@ describe('Login.vue', () => {
     })
   })
 
-  // it(`Login Button displayed and enabled (valid email provided with an a proposed password).`, done => {
-  //   let email = 'a@b'
-  //   const Constructor = Vue.extend(Login)
-  //   const component = new Constructor({
-  //     propsData: {
-  //       emailentry: email
-  //     }
-  //   }).$mount()
-  //
-  //   let password = '123'
-  //   component.$el.querySelector('#password').value = password
-  //   expect(component.$el.querySelector('#password').value).to.equal(password)
-  //
-  //   Vue.nextTick(() => {
-  //     expect(component.$el.querySelector('#password-section').style.display).to.not.equal('none')
-  //     expect(component.$el.querySelector('#submit').style.display).to.not.equal('none')
-  //     expect(component.$el.querySelector('#submit').disabled).to.equal(false)
-  //     done()
-  //   })
-  // })
+  it(`Login Button displayed and enabled (valid email provided with an a proposed password).`, done => {
+    let email = 'a@b'
+    let thePassword = '123'
+    const Constructor = Vue.extend(Login)
+    const component = new Constructor({
+      propsData: {
+        emailentry: email
+      },
+      data: {
+        user: {
+          password: thePassword
+        }
+      }
+    }).$mount()
+
+    expect(component.$el.querySelector('#password').value).to.equal(thePassword)
+
+    Vue.nextTick(() => {
+      expect(component.$el.querySelector('#password-section').style.display).to.not.equal('none')
+      expect(component.$el.querySelector('#submit').style.display).to.not.equal('none')
+      expect(component.$el.querySelector('#submit').disabled).to.equal(false)
+      done()
+    })
+  })
 })

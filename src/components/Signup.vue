@@ -14,11 +14,11 @@
       </div>
     </div>
 
-    <div class="row margin-top-15">
+    <div id="password-section" class="row margin-top-15">
       <div class="small-12 columns">
-        Password <span class="hb85276 float-right" v-show="!validation.password">Required</span>
-        <span v-bind:class="humanizedCSS" v-show="validation.password && validation.passwordlength">{{ humanizedScore }}</span>
-        <span class="hb85276 float-right" v-show="validation.password && validation.passwordstrength && !validation.passwordlength">Max Len {{ maxLength }}</span>
+        Password <span id="password-required" class="hb85276 float-right" v-show="!validation.password">Required</span>
+        <span id="password-score" v-bind:class="humanizedCSS" v-show="validation.password && validation.passwordlength">{{ humanizedScore }}</span>
+        <span id="password-max-length" class="hb85276 float-right" v-show="validation.password && validation.passwordstrength && !validation.passwordlength">Max Len {{ maxLength }}</span>
 
         <input id="password" type="password" class="margin-bottom-0-i" v-on:keyup="reactToScore" v-model="newUser.password" v-bind:maxlength="maxLength">
       </div>
