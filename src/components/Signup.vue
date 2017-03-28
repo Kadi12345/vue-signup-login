@@ -17,7 +17,7 @@
     <div id="password-section" class="row margin-top-15">
       <div class="small-12 columns">
         Password <span id="password-required" class="hb85276 float-right" v-show="!validation.password">Required</span>
-        <span id="password-score" v-bind:class="humanizedCSS" v-show="validation.password && validation.passwordlength">{{ humanizedScore }}</span>
+        <span id="password-human-score" v-bind:class="humanizedCSS" v-show="validation.password && validation.passwordlength">{{ humanizedScore }}</span>
         <span id="password-max-length" class="hb85276 float-right" v-show="validation.password && validation.passwordstrength && !validation.passwordlength">Max Len {{ maxLength }}</span>
 
         <input id="password" type="password" class="margin-bottom-0-i" v-on:keyup="reactToScore" v-model="newUser.password" v-bind:maxlength="maxLength">
@@ -28,36 +28,38 @@
           <div v-bind:style="scorePercentStyle" class="height-0_8rem"></div>
         </div>
 
-        <span v-bind:class="humanizedCSS">{{ passwordScore }}</span>
+        <span id="password-integer-score" v-bind:class="humanizedCSS">{{ passwordScore }}</span>
       </div>
     </div>
 
     <div class="row margin-top-15">
       <div class="small-12 columns">
-        Confirm Password <span class="hb85276 float-right" v-show="!validation.confirmpassword">Required</span>
-        <input id="confirmPassword" type="password" v-model="newUser.confirmPassword" v-bind:maxlength="maxLength">
+        Confirm Password <span id="confirm-password-required" class="hb85276 float-right" v-show="!validation.confirmpassword">Required</span>
+        <input id="confirm-password" type="password" v-model="newUser.confirmPassword" v-bind:maxlength="maxLength">
       </div>
     </div>
 
     <div class="row text-align-center padding-top-10">
       <div class="small-12 columns">
         <span class="hb85276" v-show="!validation.confirmpassword || validation.passwordsmatch">&nbsp</span>
-        <span class="hb85276" v-show="validation.confirmpassword && !validation.passwordsmatch">Passwords Must Match</span>
+        <span id="passwords-match" class="hb85276" v-show="validation.confirmpassword && !validation.passwordsmatch">Passwords Must Match</span>
       </div>
     </div>
 
     <div class="row margin-top-10 text-align-center">
       <div class="small-12 columns">
-        <button id="submit" class="button font-size-20-s padding-16-s-i border-radius-5" v-bind:disabled="!isValid" type="submit" name="submit">
+        <button id="signup-button" class="button font-size-20-s padding-16-s-i border-radius-5" v-bind:disabled="!isValid" type="submit" name="submit">
           <span>Sign Up</span>
         </button>
       </div>
     </div>
 
-    <div class="row text-align-center margin-top-10">
+<!--TODO Full Handle the User Exists case to prevent double sign-up-->
+
+    <div id="already-a-member" class="row text-align-center margin-top-10" v-show="userExists">
       <div class="small-12 columns">
         Already a member?
-        <span class="cursor-pointer h1779ba he4ad28-hover" v-show="userExists" v-on:click="login">Login</span>
+        <span class="cursor-pointer h1779ba he4ad28-hover" v-on:click="login">Login</span>
       </div>
     </div>
   </form>
@@ -82,9 +84,10 @@ export default {
         password: '',
         confirmPassword: ''
       },
-      humanizedScore: 'Invalid',
+      humanizedScore: 'Too Weak',
       humanizedCSS: 'float-right ',
-      scorePercentStyle: 'width: 0%; background-color: #b85276;'
+      scorePercentStyle: 'width: 0%; background-color: #b85276;',
+      knownEmails: ['a@b', 'test@test.com']
     }
   },
   methods: {
@@ -105,7 +108,7 @@ export default {
       let strong = '488957'
       let wow = '488957'
 
-      this.humanizedScore = 'Invalid'
+      this.humanizedScore = 'Too Weak'
       this.humanizedCSS = 'float-right '
       this.scorePercentStyle = 'width: 0%; background-color: #b85276;'
 
@@ -131,7 +134,7 @@ export default {
         this.scorePercentStyle = 'width: ' + score + '%; background-color: #' + wow + ';'
       } else {
         console.error('invalid password score')
-        this.humanizedScore = 'Invalid'
+        this.humanizedScore = 'Too Weak'
         this.humanizedCSS += ' h' + tooWeak
         this.scorePercentStyle = 'width: 0%; background-color: #' + tooWeak + ';'
       }
@@ -140,7 +143,7 @@ export default {
   computed: {
     userExists: function () {
       // TODO: If user exists change view.
-      return true
+      return this.knownEmails.indexOf(this.newUser.email) > -1
     },
     validation: function () {
       return {
