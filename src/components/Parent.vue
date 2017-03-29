@@ -26,7 +26,7 @@ export default {
     changepassword: {},   // requires current password NOT sure this is required here seems like a profile feature
     signup: Signup,
     checkemail: CheckEmail,
-    confirmemail: {},
+    confirmemail: {},     // Requires a separate page.
     signupsuccess: {}
   },
   data () {

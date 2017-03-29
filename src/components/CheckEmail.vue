@@ -11,6 +11,16 @@
 <script>
   export default {
     name: 'CheckEmail',
-    props: ['emailentry']
+    props: ['emailentry'],
+    methods: {
+      createLink: function () {
+//        return baseurl + uuid
+        return ''
+      },
+      sendLink: function () {
+        // TODO: Send email.  Doesn't firebase already do this?
+        return ''
+      }
+    }
   }
 </script>
