@@ -93,7 +93,7 @@ export default {
   methods: {
     addUser: function () {
       if (this.isValid) {
-
+        this.$emit('switchcomponent', ['checkemail', 'Check Email', this.newUser.email])
       }
     },
     login: function () {

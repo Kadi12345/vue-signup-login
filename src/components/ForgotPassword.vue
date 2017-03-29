@@ -6,8 +6,8 @@
 </template>
 
 <script>
-export default {
-  name: 'ForgotPassword',
-  props: ['emailentry']
-}
+  export default {
+    name: 'ForgotPassword',
+    props: ['emailentry']
+  }
 </script>

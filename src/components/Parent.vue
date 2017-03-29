@@ -13,19 +13,21 @@
 
 <script>
 import Login from '@/components/Login'
-import Signup from '@/components/Signup'
 import ForgotPassword from '@/components/ForgotPassword'
+import Signup from '@/components/Signup'
+import CheckEmail from '@/components/CheckEmail'
 
 export default {
   name: 'Parent',
   components: {
     login: Login,
-    signup: Signup,
     forgotpassword: ForgotPassword,
     resetpassword: {},    // requires email confirmation link
-    changepassword: {},   // requires current password
+    changepassword: {},   // requires current password NOT sure this is required here seems like a profile feature
+    signup: Signup,
+    checkemail: CheckEmail,
     confirmemail: {},
-    loginsuccess: {}
+    signupsuccess: {}
   },
   data () {
     return {
