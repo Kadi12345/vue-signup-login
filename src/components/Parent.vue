@@ -66,5 +66,11 @@ export default {
       })
     }
   }
+//  computed: {
+//    materialIconCode: function () {
+//      Change material icon dynamically based on selected component.
+//      return '&#xE85E'
+//    }
+//  }
 }
 </script>
