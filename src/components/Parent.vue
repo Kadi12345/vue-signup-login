@@ -1,6 +1,6 @@
 <template>
   <div class="small-12 medium-8 large-5 small-centered columns bgc-h76b852 border-radius-3 margin-top-20">
-    <div class="row text-align-center font-size-32-s white padding-top-20">{{ title }} <i class="material-icons font-size-36-i">&#xE85E</i></div>
+    <div class="row text-align-center font-size-32-s white padding-top-20">{{ title }} <i class="material-icons font-size-36-i" v-html="materialIconCode"></i></div>
 
     <div class="row">
       <div class="small-11 columns small-centered margin-top-35">
@@ -65,12 +65,23 @@ export default {
         return validation[key]
       })
     }
+  },
+  computed: {
+    materialIconCode: function () {
+      // Change material icon dynamically based on selected component.
+      switch (this.currentForm) {
+        case 'login':
+          return '&#xE85E'
+        case 'forgotpassword':
+          return '&#xE32A'
+        case 'signup':
+          return '&#xE22B'
+        case 'checkemail':
+          return '&#xE0E1'
+        default:
+          return '&#xE85E'
+      }
+    }
   }
-//  computed: {
-//    materialIconCode: function () {
-//      Change material icon dynamically based on selected component.
-//      return '&#xE85E'
-//    }
-//  }
 }
 </script>

@@ -77,6 +77,9 @@ export default {
 //      console.log('forgotPassword clicked')
       this.$emit('switchcomponent', ['forgotpassword', 'Forgot Password', this.user.email])
     },
+    login: function () {
+      this.$emit('switchcomponent', ['login', 'Login', this.user.email])
+    },
     signup: function () {
 //      console.log('sign up clicked')
       this.$emit('switchcomponent', ['signup', 'Sign Up', this.user.email])
@@ -87,6 +90,9 @@ export default {
     },
     submitEmail: function () {
       let validation = this.validation
+      if (validation.email && validation.emaillength && validation.emailformat && validation.emailexists) {
+        this.login()
+      }
 
       if (validation.email && validation.emaillength && validation.emailformat && !validation.emailexists) {
         this.signup()
