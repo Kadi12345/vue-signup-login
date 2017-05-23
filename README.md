@@ -31,6 +31,7 @@ npm install material-icons --save
 ##### Finish install. (Takes about 8 minutes.)
 ``` bash
 npm install
+blowdrycss
 ```
 
 ##### Setup Unit Testing
