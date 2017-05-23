@@ -82,6 +82,11 @@ blowdry.css
 blowdry.min.css
 
 ###########
+# PyCharm #
+###########
+.idea/
+
+###########
 # NODE.JS #
 ###########
 
